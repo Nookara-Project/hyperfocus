@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: http: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<title>Hyperfocus Voice Chat</title>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="voice-ui.css">
+<link rel="stylesheet" href="mac.css">
+<style>
+  #frame {
+    position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden;
+    background: var(--bg); border: 1px solid var(--vl-border); border-radius: 8px;
+  }
+  #frame > * { position: relative; z-index: 1; }
+  #titlebar {
+    flex: none; height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 6px 0 10px;
+    background: rgba(14, 14, 16, .55); border-bottom: 1px solid var(--vl-border);
+  }
+  .tb-brand { display: flex; align-items: center; gap: 8px; }
+  .tb-brand img { width: 20px; height: 20px; image-rendering: pixelated; }
+  .tb-brand span { color: var(--lightbrown); }
+  .tb-right { display: flex; gap: 4px; -webkit-app-region: no-drag; }
+  #wrap { flex: 1; min-height: 0; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  #wrap .box { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; }
+  .vc-users { max-height: none !important; }
+  .note { font-size: 11px; color: var(--lightbrown); text-align: center; }
+</style>
+</head>
+<body>
+<div id="frame" class="stars">
+  <header id="titlebar" data-drag>
+    <div class="tb-brand"><img src="../assets/hyperfocus.png" alt=""><b>VOICE CHAT</b><span>:: hyperfocus</span></div>
+    <div class="tb-right">
+      <button id="btn-min" class="tbtn" title="Minimize"></button>
+      <button id="btn-close" class="tbtn close" title="Close (you stay in the call)"></button>
+    </div>
+  </header>
+  <div id="wrap">
+    <div class="box"><div class="box-h">voice chat</div><div id="voice-root"></div></div>
+    <div class="note">closing this window keeps you in the call - hit leave to hang up</div>
+  </div>
+</div>
+<script src="icons.js"></script>
+<script src="drag.js"></script>
+<script src="voice-ui.js"></script>
+<script src="voicepanel.js"></script>
+</body>
+</html>

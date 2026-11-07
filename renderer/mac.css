@@ -1,0 +1,3 @@
+html.mac #btn-min, html.mac #btn-close, html.mac #lg-min, html.mac #lg-close, html.mac .lg-win { display: none; }
+html.mac #hbar { padding-left: 86px; }
+html.mac #titlebar { padding-left: 86px; }

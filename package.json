@@ -1,0 +1,109 @@
+{
+  "name": "hyperfocus",
+  "productName": "Hyperfocus",
+  "version": "1.3.41-beta.1",
+  "description": "Hyperfocus - the IKELENE.net launcher",
+  "author": "Ikelene",
+  "license": "AGPL-3.0-only",
+  "main": "main.js",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "dist:mac": "electron-builder --mac -c.npmRebuild=false"
+  },
+  "devDependencies": {
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "extract-zip": "^2.0.1",
+    "hash-wasm": "4.12.0",
+    "koffi": "^3.2.1"
+  },
+  "build": {
+    "appId": "net.ikelene.hyperfocus",
+    "protocols": [
+      {
+        "name": "Hyperfocus",
+        "schemes": [
+          "hyperfocus"
+        ]
+      }
+    ],
+    "productName": "Hyperfocus",
+    "copyright": "Ikelene / IKELENE.net",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**",
+      "renderer/**",
+      "assets/**",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "build/icon.icns",
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "artifactName": "Hyperfocus-mac.${ext}",
+      "identity": "-",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "files": [
+        "main.js",
+        "preload.js",
+        "lib/**",
+        "renderer/**",
+        "assets/**",
+        "package.json",
+        "!node_modules/koffi/**",
+        "!node_modules/@koromix/**",
+        "!node_modules/register-scheme/**"
+      ],
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Hyperfocus uses the microphone for voice chat.",
+        "NSCameraUsageDescription": "Hyperfocus uses the camera for video calls."
+      }
+    },
+    "dmg": {
+      "title": "Hyperfocus",
+      "icon": "build/icon.icns",
+      "writeUpdateInfo": false
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "runAfterFinish": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Hyperfocus",
+      "artifactName": "Hyperfocus-Setup.exe",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    }
+  }
+}

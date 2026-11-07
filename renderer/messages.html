@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: http: data:; media-src 'self' https: data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<title>Hyperfocus Instant Messenger</title>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="mail-ui.css">
+<link rel="stylesheet" href="mac.css">
+<style>
+  #frame {
+    position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden;
+    background: var(--bg); border: 1px solid var(--vl-border); border-radius: 8px;
+  }
+  #frame > * { position: relative; z-index: 1; }
+  #titlebar {
+    flex: none; height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 6px 0 10px;
+    background: rgba(14, 14, 16, .55); border-bottom: 1px solid var(--vl-border);
+  }
+  .tb-brand { display: flex; align-items: center; gap: 8px; }
+  .tb-brand img { width: 20px; height: 20px; image-rendering: pixelated; }
+  .tb-brand span { color: var(--lightbrown); }
+  .tb-right { display: flex; gap: 4px; -webkit-app-region: no-drag; }
+  #mail-root { flex: 1; min-height: 0; padding: 14px; }
+</style>
+</head>
+<body>
+<div id="frame" class="stars">
+  <header id="titlebar" data-drag>
+    <div class="tb-brand"><img src="../assets/velora.png" alt=""><b>INSTANT MESSENGER</b><span>:: hyperfocus</span></div>
+    <div class="tb-right">
+      <button id="btn-min" class="tbtn" title="Minimize"></button>
+      <button id="btn-close" class="tbtn close" title="Close"></button>
+    </div>
+  </header>
+  <div id="mail-root"></div>
+</div>
+<script src="icons.js"></script>
+<script src="drag.js"></script>
+<script src="mail-ui.js"></script>
+<script src="messages.js"></script>
+</body>
+</html>

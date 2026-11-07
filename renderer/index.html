@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: http: data:; media-src 'self' https: http: data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' data:">
+<title>Hyperfocus</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="store.css">
+<link rel="stylesheet" href="people.css">
+<link rel="stylesheet" href="mac.css">
+</head>
+<body class="intro">
+<div id="beta-banner" hidden></div>
+<div id="frame">
+  <div id="splash"><img src="../assets/hyperfocus.png" alt=""></div>
+  <div id="offline-gate" hidden>
+    <div class="og-box">
+      <img src="../assets/hyperfocus.png" alt="">
+      <h2>can't reach the Hyperfocus server</h2>
+      <p id="og-why"></p>
+      <div class="og-acts"><button class="btn" id="og-retry">try again</button></div>
+      <a href="#" id="og-offline">use the launcher offline</a>
+    </div>
+  </div>
+  <div id="connecting" hidden>connecting to the Hyperfocus server...</div>
+  <div id="login-gate" data-drag hidden>
+    <div class="lg-win"><button id="lg-min" class="rbtn" title="Minimize"></button><button id="lg-close" class="rbtn close" title="Close"></button></div>
+    <div class="lg-box">
+      <img src="../assets/hyperfocus.png" alt="">
+      <div class="lg-kicker"><span id="lg-mark" class="vl-mark"></span><span>HYPERFOCUS</span></div>
+      <h2>Sign in to Hyperfocus with your Nookara account</h2>
+      <p class="lg-why">Your library, friends, achievements and cloud saves all live on your Nookara account.</p>
+      <div id="lg-act"></div>
+    </div>
+  </div>
+
+  <header id="hbar" data-drag>
+    <div id="brand"><span id="brand-mark" class="vl-mark"></span><span>HYPERFOCUS</span></div>
+    <nav id="mtabs">
+      <button class="mtab" data-tab="store"><span class="mt-ico"></span><span>Store</span></button>
+      <button class="mtab" data-tab="library"><span class="mt-ico"></span><span>Library</span></button>
+      <button class="mtab" data-tab="friends" hidden><span class="mt-n"></span><span>Friends</span></button>
+      <button class="mtab mt-me" data-tab="profile" hidden></button>
+      <i id="mtab-ink"></i>
+    </nav>
+    <button id="btn-library" class="rbtn" title="All games" hidden></button>
+    <div class="hb-fill"></div>
+    <div id="topbar">
+      <div id="account-wrap">
+        <button id="account" class="acct"></button>
+        <div id="account-menu" class="menu" hidden></div>
+      </div>
+      <button id="btn-voice" class="rbtn live" title="You're in a voice room" hidden></button>
+      <div id="vol-wrap" hidden>
+        <button id="btn-vol" class="rbtn" title="Mute music"></button>
+        <div id="vol-pop"><div class="vol-inner"><input id="vol" type="range" min="0" max="100" step="1"><span id="vol-val"></span></div></div>
+      </div>
+      <button id="btn-console" class="rbtn" hidden></button>
+      <span class="vsep"></span>
+      <button id="btn-settings" class="rbtn" title="Settings"></button>
+      <button id="btn-min" class="rbtn" title="Minimize"></button>
+      <button id="btn-close" class="rbtn close" title="Close"></button>
+    </div>
+  </header>
+
+  <div id="body">
+  <div id="lib-view">
+  <aside id="side">
+    <div id="lib-top">
+      <label class="lib-q"><span class="lq-ico"></span><input id="lib-q" type="search" placeholder="Search your library" spellcheck="false"></label>
+    </div>
+    <div id="app-list"></div>
+    <button id="lib-redeem"><span class="lrd-ico"></span><span class="grow">Redeem a game code</span></button>
+    <div id="lib-foot"><span id="lib-count"></span><button id="lib-browse" class="btn ghost"></button></div>
+  </aside>
+
+  <main id="stage">
+    <div id="gv">
+      <header id="hero">
+        <div id="bg" class="default"></div>
+        <div id="shade"></div>
+        <div id="drag" data-drag></div>
+        <div id="offline-banner" hidden><b>Offline Mode</b><span>only your installed games</span><a href="#" id="ob-reconnect">reconnect</a></div>
+        <div id="media-zone">
+          <div id="media-toggle">
+            <button data-mode="video" title="Video background"></button>
+            <button data-mode="image" title="Image background"></button>
+          </div>
+        </div>
+        <div id="hero-in">
+          <img id="app-logo" alt="" hidden>
+          <div id="app-title" hidden></div>
+          <div id="hero-meta">
+            <div id="stage-badge" hidden></div>
+            <button id="trailer-btn" hidden></button>
+            <span id="hero-by" hidden></span>
+          </div>
+        </div>
+      </header>
+
+      <div id="play-wrap" hidden>
+        <div id="play-box">
+          <div id="play-row">
+            <button id="play"><span id="play-fill"></span><span id="play-ico"></span><span id="play-label">Play</span><span id="play-off" class="pr-off" hidden></span></button>
+            <button id="play-beta" hidden><span id="play-beta-fill"></span><span id="play-beta-ico"></span><span id="play-beta-label"></span></button>
+            <button id="cloud-chip" hidden></button>
+          </div>
+        </div>
+        <div id="play-sub" hidden></div>
+        <div id="play-stats">
+          <div class="st" id="st-last"><span class="k"><i class="ic" id="ic-last"></i>last played</span><span class="v" id="stat-last">--</span></div>
+          <div class="st" id="st-time"><span class="k"><i class="ic" id="ic-time"></i><span id="stat-time-k">play time</span></span><span class="v" id="stat-time">--</span></div>
+          <div class="st" id="st-ach" hidden><span class="k"><i class="ic" id="ic-ach"></i>achievements</span><span class="v"><span id="stat-ach"></span><i class="st-bar"><i id="stat-ach-bar"></i></i></span></div>
+          <div class="st" id="st-pad" hidden><span class="k"><i class="ic" id="ic-pad"></i>controller</span><span class="v" id="stat-pad"></span></div>
+        </div>
+        <div id="gv-acts">
+          <button id="gv-links" class="gv-ic" title="Links" data-menu-btn hidden></button>
+          <button id="gv-store" class="gv-ic" title="Open the store page"></button>
+          <button id="gv-settings" class="gv-ic" title="Game settings"></button>
+          <button id="play-more" class="gv-ic" title="More"></button>
+        </div>
+      </div>
+      <div id="gv-notes">
+        <div id="gbeta-notice" hidden></div>
+        <div id="pad-warn" hidden></div>
+      </div>
+
+      <div id="gv-body">
+        <section id="board">
+          <div class="gv-h"><span class="gv-ht">notice board</span><nav id="board-chips"></nav></div>
+          <div id="board-list"></div>
+        </section>
+        <aside id="gv-side">
+          <section id="ach-widget" class="gv-box" hidden></section>
+          <section id="gv-friends" class="gv-box" hidden></section>
+          <section id="gv-shots" class="gv-box" hidden><div class="box-h gv-bh"><span class="bh-ico" id="ic-shots"></span><span class="grow">screenshots</span><span class="gv-bn" id="shots-n"></span></div><div id="shot-strip"></div></section>
+          <section id="gv-linkbox" class="gv-box" hidden></section>
+          <section id="gv-about" class="gv-box" hidden></section>
+        </aside>
+      </div>
+    </div>
+    <div id="play-menu" class="menu" hidden></div>
+    <div id="links-menu" class="menu" hidden></div>
+
+    <section id="library" class="stars" hidden>
+      <div id="lib-head">
+        <div><div class="lib-kicker">HYPERFOCUS</div><div class="lib-title">your library</div></div>
+        <button id="btn-browse" class="btn">Browse the store</button>
+      </div>
+      <div id="lib-grid"></div>
+    </section>
+
+    <div id="empty" hidden></div>
+  </main>
+  </div>
+
+  <section id="store" hidden>
+    <div id="st-top">
+      <button id="st-back" class="st-back" title="Back" hidden></button>
+      <label class="st-q"><span class="sq-ico"></span><input id="st-q" type="search" placeholder="Search the store" spellcheck="false"></label>
+      <nav id="st-chips"></nav>
+    </div>
+    <div id="st-scroll"><div id="st-view"></div></div>
+  </section>
+
+  <section id="friends-view" class="pv" hidden>
+    <div id="fv-top" class="pv-top">
+      <label class="st-q pv-q"><span class="sq-ico"></span><input id="fv-q" type="search" placeholder="Search your friends" spellcheck="false"></label>
+      <nav id="fv-chips" class="pv-chips"></nav>
+    </div>
+    <div id="fv-scroll" class="pv-scroll"><div id="fv-view"></div></div>
+  </section>
+
+  <section id="profile-view" class="pv" hidden>
+    <div id="pf-top" class="pv-top">
+      <button id="pf-back" class="st-back" title="Back" hidden></button>
+      <div id="pf-crumb"></div>
+      <span class="grow"></span>
+      <label class="st-q pv-q"><span class="sq-ico"></span><input id="pf-q" type="search" placeholder="Look up a Nookara user" spellcheck="false" maxlength="32"></label>
+      <button id="pf-refresh" class="st-back" title="Refresh (F5)"></button>
+    </div>
+    <div id="pf-scroll" class="pv-scroll"><div id="pf-view"></div></div>
+  </section>
+  </div>
+</div>
+<div id="pad-hints" hidden></div>
+<div id="ctx-menu" class="menu" hidden></div>
+<div id="people-menu" class="menu" hidden></div>
+<div id="modal-root"></div>
+<div id="toasts"></div>
+<script src="icons.js"></script>
+<script src="drag.js"></script>
+<script src="bubbles.js"></script>
+<script src="app.js"></script>
+<script src="store.js"></script>
+<script src="profile-tab.js"></script>
+<script src="friends-tab.js"></script>
+<script src="gamepad.js"></script>
+</body>
+</html>

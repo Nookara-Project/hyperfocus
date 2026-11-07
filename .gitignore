@@ -1,0 +1,7 @@
+node_modules/
+dist/
+dist-mac/
+distv1/
+*.bak-*
+assets/sounds/console/
+assets/sounds/steam_*
